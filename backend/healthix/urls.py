@@ -17,6 +17,6 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^Backend_healthix/',include('Backend_healthix.urls'))
+    url('^admin/', admin.site.urls),
+    url('',include('Backend_healthix.urls'))
 ]
