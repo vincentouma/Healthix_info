@@ -38,3 +38,55 @@ class MpesaPayment(BaseModel):
         verbose_name_plural = 'Mpesa Payments'
     def __str__(self):
         return self.first_name
+
+#createpayment model   
+
+class Payment(models.Model):
+    name = models.CharField(max_length = 65, blank=True)
+    account = models.CharField(max_length = 65, blank=True)
+    phone_Number= models.CharField(max_length=15)
+    amount = models.IntegerField(default=0)
+    timestamp = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    conversation_id = models.CharField(max_length=100, null=True)
+
+
+    def __str__(self):
+        return self.name
+
+    def save_payment(self):
+        self.save()      
+
+
+# bills model where transaction are stored
+
+
+class Bills(models.Model):
+
+    amount=models.IntegerField(blank=True)
+    phone_number=models.TextField(default=0)
+    reference=models.TextField(default=0)
+    timestamp = models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    conversation_id = models.CharField(max_length=100, null=True)
+
+    def save_bills(self):
+        self.save()
+
+    def __str__(self):
+
+        return self.amount
+
+# hospitals table  
+
+class Hospitals(models.Model):
+
+    name = models.CharField(max_length = 65, blank=True)
+    reference_no =models.TextField(default=0)
+    location=models.CharField(max_length = 65, blank=True)
+
+    def save_hospitals(self):
+        self.save()
+
+    def __str__(self):
+
+        return self.reference_no
+
